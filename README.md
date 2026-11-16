@@ -87,6 +87,28 @@ GoogleContactsUTEC/
 
 ---
 
+## ¿Usas otra universidad?
+
+Solo necesitas cambiar **2 cosas** en `app_nuevo.py`:
+
+1. **El dominio** (línea 14) — reemplaza `utec\.edu\.pe` por el de tu universidad:
+   ```python
+   # Antes (UTEC):
+   patron_alumno = re.compile(r"^[a-z0-9_-]+\.[a-z0-9_.-]+@utec\.edu\.pe$")
+
+   # Ejemplo para PUCP:
+   patron_alumno = re.compile(r"^[a-z0-9_-]+\.[a-z0-9_.-]+@pucp\.edu\.pe$")
+   ```
+
+2. **El patrón del correo** — si en tu universidad el formato de alumno no es `nombre.apellido@universidad.edu`, ajusta el regex. Por ejemplo, si usan `a20201234@universidad.edu`:
+   ```python
+   patron_alumno = re.compile(r"^a\d+@universidad\.edu\.pe$")
+   ```
+
+El resto del script (autenticación, paginación, separación por carrera) funciona igual para cualquier Google Workspace universitario.
+
+---
+
 ## Créditos
 
 - Proyecto original: [aryanranderiya/GoogleContactsEmailScraper](https://github.com/aryanranderiya/GoogleContactsEmailScraper)
